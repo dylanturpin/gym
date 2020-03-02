@@ -130,6 +130,7 @@ class EnvRegistry(object):
     def register(self, id, **kwargs):
         if id in self.env_specs:
             raise error.Error('Cannot re-register id: {}'.format(id))
+        kwargs.pop('tags', None)
         self.env_specs[id] = EnvSpec(id, **kwargs)
 
 # Have a global registry
